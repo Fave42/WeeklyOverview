@@ -1,16 +1,16 @@
 <?php
 
 /*
- * This file is part of the EasyBackupBundle.
+ * This file is part of the WeeklyOverviewBundle.
  * All rights reserved by Maximilian Groß (www.maximiliangross.de).
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace KimaiPlugin\EasyBackupBundle\Service;
+namespace KimaiPlugin\WeeklyOverviewBundle\Service;
 
 use App\Constants;
-use KimaiPlugin\EasyBackupBundle\Configuration\EasyBackupConfiguration;
+use KimaiPlugin\WeeklyOverviewBundle\Configuration\WeeklyOverviewConfiguration;
 use PhpOffice\PhpWord\Shared\ZipArchive;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Security\Core\Exception\RuntimeException;
@@ -18,7 +18,7 @@ use Symfony\Component\Security\Core\Exception\RuntimeException;
 /**
  * @Service
  */
-class EasyBackupService
+class WeeklyOverviewService
 {
     public const CMD_GIT_HEAD = 'git rev-parse HEAD';
     public const MANIFEST_FILENAME = 'manifest.json';
@@ -37,7 +37,7 @@ class EasyBackupService
     private $kimaiRootPath;
 
     /**
-     * @var EasyBackupConfiguration
+     * @var WeeklyOverviewConfiguration
      */
     private $configuration;
 
@@ -51,7 +51,7 @@ class EasyBackupService
      */
     private $filesystem;
 
-    public function __construct(string $dataDirectory, EasyBackupConfiguration $configuration)
+    public function __construct(string $dataDirectory, WeeklyOverviewConfiguration $configuration)
     {
         $this->kimaiRootPath = \dirname(\dirname($dataDirectory)) . DIRECTORY_SEPARATOR;
         $this->configuration = $configuration;

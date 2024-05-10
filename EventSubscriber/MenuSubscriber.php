@@ -1,13 +1,13 @@
 <?php
 
 /*
- * This file is part of the EasyBackupBundle.
+ * This file is part of the WeeklyOverviewBundle.
  * All rights reserved by Maximilian Groß (www.maximiliangross.de).
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace KimaiPlugin\EasyBackupBundle\EventSubscriber;
+namespace KimaiPlugin\WeeklyOverviewBundle\EventSubscriber;
 
 use App\Event\ConfigureMainMenuEvent;
 use App\Utils\MenuItemModel;
@@ -58,7 +58,7 @@ class MenuSubscriber implements EventSubscriberInterface
         $menu = $event->getSystemMenu();
 
         $menu->addChild(
-            new MenuItemModel('easy_backup', 'EasyBackup', 'easy_backup', [], 'fas fa-hdd')
+            new MenuItemModel('easy_backup', 'WeeklyOverview', 'easy_backup', [], 'fas fa-hdd')
         );
     }
 }

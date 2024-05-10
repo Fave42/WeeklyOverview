@@ -7,7 +7,7 @@
     "keywords": [
         "kimai",
         "kimai-plugin",
-        "EasyBackup",
+        "WeeklyOverview",
         "Backup"
     ],
     "license": "MIT",
@@ -21,7 +21,7 @@
     "extra": {
         "kimai": {
             "require": 20000,
-            "name": "EasyBackup"
+            "name": "WeeklyOverview"
         }
     },
     "scripts": {

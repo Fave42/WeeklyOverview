@@ -1,26 +1,26 @@
 <?php
 
 /*
- * This file is part of the EasyBackupBundle.
+ * This file is part of the WeeklyOverviewBundle.
  * All rights reserved by Maximilian Groß (www.maximiliangross.de).
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace KimaiPlugin\EasyBackupBundle\Tests\Command;
+namespace KimaiPlugin\WeeklyOverviewBundle\Tests\Command;
 
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Symfony\Component\Console\Tester\CommandTester;
 
-class EasyBackupBackupCommandTest extends KernelTestCase
+class WeeklyOverviewBackupCommandTest extends KernelTestCase
 {
     public function testExecute()
     {
         $kernel = self::bootKernel();
         $application = new Application($kernel);
 
-        $command = $application->find('EasyBackup:backup');
+        $command = $application->find('WeeklyOverview:backup');
         $commandTester = new CommandTester($command);
         $commandTester->execute();
 

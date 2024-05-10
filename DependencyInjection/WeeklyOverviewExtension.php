@@ -1,13 +1,13 @@
 <?php
 
 /*
- * This file is part of the EasyBackupBundle.
+ * This file is part of the WeeklyOverviewBundle.
  * All rights reserved by Maximilian Groß (www.maximiliangross.de).
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace KimaiPlugin\EasyBackupBundle\DependencyInjection;
+namespace KimaiPlugin\WeeklyOverviewBundle\DependencyInjection;
 
 use App\Plugin\AbstractPluginExtension;
 use Symfony\Component\Config\FileLocator;
@@ -15,7 +15,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 use Symfony\Component\DependencyInjection\Loader;
 
-class EasyBackupExtension extends AbstractPluginExtension implements PrependExtensionInterface
+class WeeklyOverviewExtension extends AbstractPluginExtension implements PrependExtensionInterface
 {
     /**
      * @param array $configs

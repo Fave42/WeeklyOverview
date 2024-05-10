@@ -6,14 +6,14 @@ services:
         bind:
             $dataDirectory: "%kimai.data_dir%"
             
-    KimaiPlugin\EasyBackupBundle\:
+    KimaiPlugin\WeeklyOverviewBundle\:
         resource: '../../*'
         exclude:
             - '../../Resources/'
 
-    KimaiPlugin\EasyBackupBundle\Controller\:
+    KimaiPlugin\WeeklyOverviewBundle\Controller\:
         resource: '../../Controller'
         tags: ['controller.service_arguments']
 
-    KimaiPlugin\EasyBackupBundle\Command\EasyBackupBackupCommand:
+    KimaiPlugin\WeeklyOverviewBundle\Command\WeeklyOverviewBackupCommand:
         tags: ['console.command']
