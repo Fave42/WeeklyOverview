@@ -10,7 +10,6 @@
 namespace KimaiPlugin\WeeklyOverviewBundle\Service;
 
 use App\Constants;
-use KimaiPlugin\WeeklyOverviewBundle\Configuration\WeeklyOverviewConfiguration;
 use PhpOffice\PhpWord\Shared\ZipArchive;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Security\Core\Exception\RuntimeException;
@@ -37,11 +36,6 @@ class WeeklyOverviewService
     private $kimaiRootPath;
 
     /**
-     * @var WeeklyOverviewConfiguration
-     */
-    private $configuration;
-
-    /**
      * @var string
      */
     private $dbUrl;
@@ -51,10 +45,9 @@ class WeeklyOverviewService
      */
     private $filesystem;
 
-    public function __construct(string $dataDirectory, WeeklyOverviewConfiguration $configuration)
+    public function __construct(string $dataDirectory)
     {
         $this->kimaiRootPath = \dirname(\dirname($dataDirectory)) . DIRECTORY_SEPARATOR;
-        $this->configuration = $configuration;
         $this->dbUrl = $_SERVER['DATABASE_URL'];
         $this->filesystem = new Filesystem();
     }
