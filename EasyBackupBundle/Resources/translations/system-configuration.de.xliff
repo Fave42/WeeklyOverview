@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" target-language="de" datatype="plaintext" original="system-configuration.en.xliff">
+        <body>
+            <trans-unit id="easy_backup_config">
+                <source>easy_backup_config</source>
+                <target>EasyBackup Plugin</target>
+            </trans-unit>
+            <trans-unit id="easy_backup.setting_mysqldump_command">
+                <source>easy_backup.setting_mysqldump_command</source>
+                <target>Ihr mysqldump Befehl (Platzhalter werden automatisch ersetzt)</target>
+            </trans-unit>
+            <trans-unit id="easy_backup.setting_mysql_restore_command">
+                <source>easy_backup.setting_mysql_restore_command</source>
+                <target>MySQL Befehl für den Import der SQL Backup Datei (Platzhalter werden automatisch ersetzt)</target>
+            </trans-unit>
+            <trans-unit id="easy_backup.setting_backup_dir">
+                <source>easy_backup.setting_backup_dir</source>
+                <target>Backup Verzeichnis</target>
+            </trans-unit>
+            <trans-unit id="easy_backup.setting_paths_to_backup">
+                <source>easy_backup.setting_paths_to_backup</source>
+                <target>Zu sichernde Dateien und Pfade</target>
+            </trans-unit>
+            <trans-unit id="easy_backup.setting_backup_amount_max">
+                <source>easy_backup.setting_backup_amount_max</source>
+                <target>Maximal aufzubewahrende Anzahl an Backups. Ältere werden automatisch gelöscht.</target>
+            </trans-unit>
+            <trans-unit id="help.easy_backup.setting_backup_amount_max">
+                <source>help.easy_backup.setting_backup_amount_max</source>
+                <target>Ein Wert kleiner 1 bedeutet, dass kein Backup automatisch gelöscht wird.</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

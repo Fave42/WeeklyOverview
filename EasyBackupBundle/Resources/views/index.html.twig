@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+
+{# {% from "macros.twig" import work_times_result %} #}
+
+{% block page_title %}
+	{{ 'Easy Backup'|trans }}
+{% endblock %}
+{% block page_subtitle %}
+	{{ 'easy_backup.subtitle'|trans }}
+{% endblock %}
+
+{% block main %} 	
+	{% set expectedWeekTimes = user.workHoursMonday + user.workHoursTuesday + user.workHoursWednesday + user.workHoursThursday + user.workHoursFriday + user.workHoursSaturday + user.workHoursSunday %}
+
+
+	{% block body %}
+
+	{% macro work_times_result(should, actual, decimal) %}
+		{% set result = actual - should %}
+		{% if result == 0 %}
+			<span class="work_time_exact">{{ result|duration(decimal) }}</span>
+		{% elseif should == 0 and actual > 0 %}
+			<span class="work_time_positive text-green">+{{ actual|duration(decimal) }}</span>
+		{% elseif result < 0 %}
+			<span class="work_time_negative text-red">{{ result|duration(decimal) }}</span>
+		{% else %}
+			<span class="work_time_positive text-green">+{{ result|duration(decimal) }}</span>
+		{% endif %}
+	{% endmacro %}
+	{% import _self as self %}
+
+	{% set decimal = decimal ?? false %}
+
+	{% set expectedWeekTimes_total = 0 %}
+	{% set work_time_is_total = 0 %}
+
+		{% block box_title %}{{ pageTitle|trans }}{% endblock %}
+		<div class="box box-secondary data_table">
+			<div class="box-body">
+				<table class="table dataTable table-striped table-hover">
+					<thead>
+						<tr>
+							<th scope="col">{{ 'Week'|trans }}</th>
+							<th scope="col">{{ 'work_times_should'|trans }}</th>
+							<th scope="col">{{ 'work_times_is'|trans }}</th>
+							<th scope="col">{{ 'work_times_is_total'|trans }}</th>
+							<th scope="col">{{ 'Montag'|trans }}</th>
+							<th scope="col">{{ 'Dienstag'|trans }}</th>
+							<th scope="col">{{ 'Mittwoch'|trans }}</th>
+							<th scope="col">{{ 'Donnerstag'|trans }}</th>
+							<th scope="col">{{ 'Freitag'|trans }}</th>
+							<th scope="col">{{ 'Samstag'|trans }}</th>
+							<th scope="col">{{ 'Sonntag'|trans }}</th>
+						</tr>
+					</thead>
+
+					<tbody>
+						{% if week_list is defined %}
+							{% for week in week_list %}
+								{% set work_time_is_total = work_time_is_total + week['totalworktimes'] %}
+								{% set expectedWeekTimes_total = expectedWeekTimes_total + expectedWeekTimes %}
+								</tr>
+									<td>{{ week['weeknumber'] }}</td>
+									<td>{{ expectedWeekTimes|duration }}</td>
+									<td>{{ self.work_times_result(expectedWeekTimes, week['totalworktimes'], decimal) }}</td>
+									<td>{{ self.work_times_result(expectedWeekTimes_total, work_time_is_total, decimal) }}</td>
+									<td>{{ self.work_times_result(user.workHoursMonday, week['Monday'], decimal) }}</td>
+									<td>{{ self.work_times_result(user.workHoursTuesday, week['Tuesday'], decimal) }}</td>
+									<td>{{ self.work_times_result(user.workHoursWednesday, week['Wednesday'], decimal) }}</td>
+									<td>{{ self.work_times_result(user.workHoursThursday, week['Thursday'], decimal) }}</td>
+									<td>{{ self.work_times_result(user.workHoursFriday, week['Friday'], decimal) }}</td>
+									<td>{{ self.work_times_result(user.workHoursSaturday, week['Saturday'], decimal) }}</td>
+									<td>{{ self.work_times_result(user.workHoursSunday, week['Sunday'], decimal) }}</td>
+								</tr>
+							{% endfor %}
+						{% endif %}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	{% endblock %}
+{% endblock %}

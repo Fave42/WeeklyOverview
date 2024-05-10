@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" target-language="hr" datatype="plaintext" original="system-configuration.de.xliff">
+        <body>
+            <trans-unit id="easy_backup_config">
+                <source>easy_backup_config</source>
+                <target>Konfiguracije za Jednostavna sigurnosna kopija</target>
+            </trans-unit>
+            <trans-unit id="easy_backup.setting_mysqldump_command">
+                <source>easy_backup.setting_mysqldump_command</source>
+                <target>Naredba mysqldump (Rezervirana mjesta će se automatski zamijeniti)</target>
+            </trans-unit>
+            <trans-unit id="easy_backup.setting_mysql_restore_command">
+                <source>easy_backup.setting_mysql_restore_command</source>
+                <target>MySQL naredba za uvoz SQL datoteke sigurnosne kopije (Rezervirana mjesta će se automatski zamijeniti)</target>
+            </trans-unit>
+            <trans-unit id="easy_backup.setting_backup_dir">
+                <source>easy_backup.setting_backup_dir</source>
+                <target>Mapa za sigurnosne kopije</target>
+            </trans-unit>
+            <trans-unit id="easy_backup.setting_paths_to_backup">
+                <source>easy_backup.setting_paths_to_backup</source>
+                <target>Datoteke i staze za spremanje sigurnosne kopije</target>
+            </trans-unit>
+            <trans-unit id="easy_backup.setting_backup_amount_max">
+                <source>easy_backup.setting_backup_amount_max</source>
+                <target>Maksimalan broj sigurnosnih kopija za čuvanje. Stariji se automatski brišu.</target>
+            </trans-unit>
+            <trans-unit id="help.easy_backup.setting_backup_amount_max">
+                <source>help.easy_backup.setting_backup_amount_max</source>
+                <target>Vrijednost manja od 1 znači da se sigurnosna kopija ne briše automatski.</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>
