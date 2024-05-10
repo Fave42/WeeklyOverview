@@ -12,6 +12,3 @@ services:
     KimaiPlugin\WeeklyOverviewBundle\Controller\:
         resource: '../../Controller'
         tags: ['controller.service_arguments']
-
-    KimaiPlugin\WeeklyOverviewBundle\Command\WeeklyOverviewBackupCommand:
-        tags: ['console.command']
