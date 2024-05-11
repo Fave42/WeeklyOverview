@@ -2,9 +2,9 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
     <file date="2019-12-13T20:00:00Z" source-language="en" target-language="de" datatype="plaintext" original="messages.en.xliff">
         <body>
-            <trans-unit id="Easy Backup">
-                <source>Easy Backup</source>
-                <target>Easy Backup</target>
+            <trans-unit id="Weekly Overview">
+                <source>Weekly Overview</source>
+                <target>Weekly Overview</target>
             </trans-unit>
             <trans-unit id="weekly_overview.subtitle">
                 <source>weekly_overview.subtitle</source>

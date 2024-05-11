@@ -2,8 +2,8 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
     <file date="2019-12-13T20:00:00Z" source-language="en" target-language="hr" datatype="plaintext" original="none">
         <body>
-            <trans-unit id="Easy Backup">
-                <source>Easy Backup</source>
+            <trans-unit id="Weekly Overview">
+                <source>Weekly Overview</source>
                 <target>Jednostavna sigurnosna kopija</target>
             </trans-unit>
             <trans-unit id="weekly_overview.subtitle">
