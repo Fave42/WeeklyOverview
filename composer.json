@@ -1,14 +1,14 @@
 {
-    "name": "mxgross/weekly-overview-bundle",
-    "description": "A Plugin for Kimai versions >2.0.0, which allows you to backup your environment with a single click.",
-    "homepage": "https://github.com/mxgross/EasyBackupBundle",
+    "name": "fave42/weekly-overview-bundle",
+    "description": "A Plugin for Kimai versions >2.0.0, which allows you to have a weekly overview with overtime calculations.",
+    "homepage": "https://github.com/Fave42/WeeklyOverviewBundle",
     "type": "kimai-plugin",
-    "version": "2.0.3",
+    "version": "1.0.0",
     "keywords": [
         "kimai",
         "kimai-plugin",
         "WeeklyOverview",
-        "Backup"
+        "Overtime"
     ],
     "license": "MIT",
     "authors": [

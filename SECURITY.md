@@ -3,4 +3,4 @@
 ## Reporting a Vulnerability
 
 Please report (suspected) security vulnerabilities to
-**[info@maximiliangross.de](mailto:info@maximiliangross.de)**.
+**[f-fey@t-online.de](mailto:f-fey@t-online.de)**.
