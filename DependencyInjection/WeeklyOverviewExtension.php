@@ -24,10 +24,6 @@ class WeeklyOverviewExtension extends AbstractPluginExtension implements Prepend
      */
     public function load(array $configs, ContainerBuilder $container)
     {
-        $configuration = new Configuration();
-        $config = $this->processConfiguration($configuration, $configs);
-
-        $this->registerBundleConfiguration($container, $config);
 
         $loader = new Loader\YamlFileLoader(
             $container,
