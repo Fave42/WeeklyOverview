@@ -15,7 +15,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 use Symfony\Component\DependencyInjection\Loader;
 
-class WeeklyOverviewExtension extends AbstractPluginExtension implements PrependExtensionInterface
+class WeeklyOverviewExtension extends AbstractPluginExtension
 {
     /**
      * @param array $configs
@@ -30,21 +30,5 @@ class WeeklyOverviewExtension extends AbstractPluginExtension implements Prepend
             new FileLocator(__DIR__ . '/../Resources/config')
         );
         $loader->load('services.yaml');
-    }
-
-    public function prepend(ContainerBuilder $container): void
-    {
-        /*
-         * @CloudRequired adapt if new permissions are added
-         */
-        $container->prependExtensionConfig('kimai', [
-            'permissions' => [
-                'roles' => [
-                    'ROLE_SUPER_ADMIN' => [
-                        'weekly_overview',
-                    ],
-                ],
-            ],
-        ]);
     }
 }

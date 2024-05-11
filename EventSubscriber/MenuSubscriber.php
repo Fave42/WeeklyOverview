@@ -51,10 +51,6 @@ class MenuSubscriber implements EventSubscriberInterface
             return;
         }
 
-        if (!$auth->isGranted('weekly_overview')) {
-            return;
-        }
-
         $menu = $event->getTimesheetMenu();
 
         $menu->addChild(
