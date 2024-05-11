@@ -55,7 +55,7 @@ class MenuSubscriber implements EventSubscriberInterface
             return;
         }
 
-        $menu = $event->getSystemMenu();
+        $menu = $event->getTimesheetMenu();
 
         $menu->addChild(
             new MenuItemModel('weekly_overview', 'WeeklyOverview', 'weekly_overview', [], 'fas fa-hdd')
