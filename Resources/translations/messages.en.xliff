@@ -6,8 +6,8 @@
                 <source>Easy Backup</source>
                 <target>Easy Backup</target>
             </trans-unit>
-            <trans-unit id="easy_backup.subtitle">
-                <source>easy_backup.subtitle</source>
+            <trans-unit id="weekly_overview.subtitle">
+                <source>weekly_overview.subtitle</source>
                 <target>Easily backup your Kimai environment</target>
             </trans-unit>
             <trans-unit id="Create Backup">

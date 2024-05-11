@@ -2,24 +2,24 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
     <file source-language="en" target-language="de" datatype="plaintext" original="system-configuration.en.xliff">
         <body>
-            <trans-unit id="easy_backup_config">
-                <source>easy_backup_config</source>
+            <trans-unit id="weekly_overview_config">
+                <source>weekly_overview_config</source>
                 <target>WeeklyOverview Plugin</target>
             </trans-unit>
-            <trans-unit id="easy_backup.setting_backup_dir">
-                <source>easy_backup.setting_backup_dir</source>
+            <trans-unit id="weekly_overview.setting_backup_dir">
+                <source>weekly_overview.setting_backup_dir</source>
                 <target>Backup Verzeichnis</target>
             </trans-unit>
-            <trans-unit id="easy_backup.setting_paths_to_backup">
-                <source>easy_backup.setting_paths_to_backup</source>
+            <trans-unit id="weekly_overview.setting_paths_to_backup">
+                <source>weekly_overview.setting_paths_to_backup</source>
                 <target>Zu sichernde Dateien und Pfade</target>
             </trans-unit>
-            <trans-unit id="easy_backup.setting_backup_amount_max">
-                <source>easy_backup.setting_backup_amount_max</source>
+            <trans-unit id="weekly_overview.setting_backup_amount_max">
+                <source>weekly_overview.setting_backup_amount_max</source>
                 <target>Maximal aufzubewahrende Anzahl an Backups. Ältere werden automatisch gelöscht.</target>
             </trans-unit>
-            <trans-unit id="help.easy_backup.setting_backup_amount_max">
-                <source>help.easy_backup.setting_backup_amount_max</source>
+            <trans-unit id="help.weekly_overview.setting_backup_amount_max">
+                <source>help.weekly_overview.setting_backup_amount_max</source>
                 <target>Ein Wert kleiner 1 bedeutet, dass kein Backup automatisch gelöscht wird.</target>
             </trans-unit>
         </body>

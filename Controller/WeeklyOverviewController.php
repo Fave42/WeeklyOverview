@@ -19,7 +19,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Psr\Log\LoggerInterface;
 
-#[IsGranted('easy_backup')]
+#[IsGranted('weekly_overview')]
 #[Route('/admin/easy-backup')]
 final class WeeklyOverviewController extends AbstractController
 {
@@ -40,7 +40,7 @@ final class WeeklyOverviewController extends AbstractController
     /**
      * @return Response
      */
-    #[Route('/', name: 'easy_backup', methods: ['GET', 'POST'])]
+    #[Route('/', name: 'weekly_overview', methods: ['GET', 'POST'])]
     public function indexAction(TimesheetRepository $timesheetRepository): Response
     {   
 

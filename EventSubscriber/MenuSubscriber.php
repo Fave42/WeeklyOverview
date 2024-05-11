@@ -51,14 +51,14 @@ class MenuSubscriber implements EventSubscriberInterface
             return;
         }
 
-        if (!$auth->isGranted('easy_backup')) {
+        if (!$auth->isGranted('weekly_overview')) {
             return;
         }
 
         $menu = $event->getSystemMenu();
 
         $menu->addChild(
-            new MenuItemModel('easy_backup', 'WeeklyOverview', 'easy_backup', [], 'fas fa-hdd')
+            new MenuItemModel('weekly_overview', 'WeeklyOverview', 'weekly_overview', [], 'fas fa-hdd')
         );
     }
 }

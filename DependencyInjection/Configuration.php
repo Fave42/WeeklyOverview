@@ -20,7 +20,7 @@ class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder(): TreeBuilder
     {
-        $treeBuilder = new TreeBuilder('easy_backup');
+        $treeBuilder = new TreeBuilder('weekly_overview');
         /** @var ArrayNodeDefinition $rootNode */
         $rootNode = $treeBuilder->getRootNode();
 
@@ -45,7 +45,7 @@ class Configuration implements ConfigurationInterface
                     ->defaultValue('/usr/bin/mysql --user={user} --password={password} --host={host} --port={port} {database} < {sql_file}')
                 ->end()
                 ->scalarNode('setting_backup_dir')
-                    ->defaultValue('var/easy_backup/')
+                    ->defaultValue('var/weekly_overview/')
                 ->end()
                 ->scalarNode('setting_paths_to_backup')
                     ->defaultValue(implode(PHP_EOL, $arrayOfPathsToBackup))

@@ -45,7 +45,7 @@ class WeeklyOverviewExtension extends AbstractPluginExtension implements Prepend
             'permissions' => [
                 'roles' => [
                     'ROLE_SUPER_ADMIN' => [
-                        'easy_backup',
+                        'weekly_overview',
                     ],
                 ],
             ],
