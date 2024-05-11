@@ -20,7 +20,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Psr\Log\LoggerInterface;
 
 #[IsGranted('weekly_overview')]
-#[Route('/admin/easy-backup')]
+#[Route('/admin/weekly-overview')]
 final class WeeklyOverviewController extends AbstractController
 {
     public function __construct(private LoggerInterface $logger)
