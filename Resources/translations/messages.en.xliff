@@ -8,35 +8,7 @@
             </trans-unit>
             <trans-unit id="weekly_overview.subtitle">
                 <source>weekly_overview.subtitle</source>
-                <target>Easily backup your Kimai environment</target>
-            </trans-unit>
-            <trans-unit id="Create Backup">
-                <source>Create Backup</source>
-                <target>Create Backup</target>
-            </trans-unit>
-            <trans-unit id="Name">
-                <source>Name</source>
-                <target>Name</target>
-            </trans-unit>
-            <trans-unit id="Delete">
-                <source>Delete</source>
-                <target>Delete</target>
-            </trans-unit>
-            <trans-unit id="Restore">
-                <source>Restore</source>
-                <target>Restore</target>
-            </trans-unit>
-            <trans-unit id="Download">
-                <source>Download</source>
-                <target>Download</target>
-            </trans-unit>
-            <trans-unit id="confirm.restore">
-                <source>confirm.restore</source>
-                <target>Do you really want to restore this backup?</target>
-            </trans-unit>
-            <trans-unit id="View status checks">
-                <source>View status checks</source>
-                <target>View status checks</target>
+                <target>Overview of all weeks with overtime calculation.</target>
             </trans-unit>
         </body>
     </file>

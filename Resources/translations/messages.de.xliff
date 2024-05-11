@@ -8,35 +8,7 @@
             </trans-unit>
             <trans-unit id="weekly_overview.subtitle">
                 <source>weekly_overview.subtitle</source>
-                <target>Mit wenig Aufwand die komplette Kimai Umgebung backupen</target>
-            </trans-unit>
-            <trans-unit id="Create Backup">
-                <source>Create Backup</source>
-                <target>Backup erstellen</target>
-            </trans-unit>
-            <trans-unit id="Name">
-                <source>Name</source>
-                <target>Name</target>
-            </trans-unit>
-            <trans-unit id="Delete">
-                <source>Delete</source>
-                <target>Löschen</target>
-            </trans-unit>
-            <trans-unit id="Restore">
-                <source>Restore</source>
-                <target>Wiederherstellen</target>
-            </trans-unit>
-            <trans-unit id="Download">
-                <source>Download</source>
-                <target>Herunterladen</target>
-            </trans-unit>
-            <trans-unit id="confirm.restore">
-                <source>confirm.restore</source>
-                <target>Wollen Sie das Backup wirklich einspielen?</target>
-            </trans-unit>
-            <trans-unit id="View status checks">
-                <source>View status checks</source>
-                <target>Status Prüfungen</target>
+                <target>Wöchentlicher Überblick mit Überstundenberechnung.</target>
             </trans-unit>
         </body>
     </file>
