@@ -16,7 +16,7 @@
 	{% block body %}
 
 	{% macro work_times_result(should, actual, decimal) %}
-		{% set result = (actual - 3600) - should %}
+		{% set result = actual - should %}
 		{% if result == 0 %}
 			<span class="work_time_exact">{{ result|duration(decimal) }}</span>
 		{% elseif should == 0 and actual > 0 %}
@@ -62,9 +62,13 @@
 								</tr>
 									<td>{{ week['weeknumber'] }}</td>
 									<td>{{ expectedWeekTimes|duration }}</td>
-									<td>{{ self.work_times_result(expectedWeekTimes, week['totalworktimes'], decimal) }}</td>
-									<td>{{ self.work_times_result(expectedWeekTimes_total, work_time_is_total, decimal) }}</td>
-									<td>{{ self.work_times_result(user.workHoursMonday, week['Monday'], decimal) }}</td>
+
+									<td>{{expectedWeekTimes}};{{week['totalworktimes']}}:		{{ self.work_times_result(expectedWeekTimes, week['totalworktimes'], decimal) }}</td>
+									<td>{{expectedWeekTimes_total}}:{{work_time_is_total}}:		{{ self.work_times_result(expectedWeekTimes_total, work_time_is_total, decimal) }}</td>
+									
+									<td>{{user.workHoursMonday}}:{{week['Monday']}}:			{{ self.work_times_result(user.workHoursMonday, week['Monday'], decimal) }}</td>
+
+
 									<td>{{ self.work_times_result(user.workHoursTuesday, week['Tuesday'], decimal) }}</td>
 									<td>{{ self.work_times_result(user.workHoursWednesday, week['Wednesday'], decimal) }}</td>
 									<td>{{ self.work_times_result(user.workHoursThursday, week['Thursday'], decimal) }}</td>
