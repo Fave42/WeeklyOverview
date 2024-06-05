@@ -190,24 +190,4 @@ final class WeeklyOverviewController extends AbstractController
             'week_list' => $week_list,
         ]);
     }
-
-    // Each timesheet_entry is a day
-    // private function process_timesheet_entry($timesheet_entry): Array
-    // {
-    //     $week_dict = array(
-    //         // 'weeknumber'=>'',
-    //         // 'totalworktimes'=> 0,
-    //         'Monday'=> 0,
-    //         'Tuesday'=> 0,
-    //         'Wednesday'=> 0,
-    //         'Thursday'=> 0,
-    //         'Friday'=> 0,
-    //         'Saturday'=> 0,
-    //         'Sunday'=> 0,
-    //     );
-
-    //     for 
-
-    //     return $week_dict;
-    // }
 }
