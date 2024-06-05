@@ -42,7 +42,7 @@ final class WeeklyOverviewController extends AbstractController
      */
     #[Route('/', name: 'weekly_overview', methods: ['GET', 'POST'])]
     public function indexAction(TimesheetRepository $timesheetRepository): Response
-    {   
+    {
 
         $user = $this->getUser(); // Get the currently logged-in user
 
@@ -57,16 +57,18 @@ final class WeeklyOverviewController extends AbstractController
         $timesheet = $timesheetRepository->findBy(['user' => $user],['begin'=>'ASC']);
 
         
-        $dateTimeFactory = $this->getDateTimeFactory($user);
+        // $dateTimeFactory = $this->getDateTimeFactory($user);
 
-        $values = new WeekByUser();
-        $values->setUser($user);
-        $values->setDate($dateTimeFactory->getStartOfWeek());
- 
-        $start = $dateTimeFactory->getStartOfWeek($values->getDate());
-        $end = $dateTimeFactory->getEndOfWeek($values->getDate());
+        // $values = new WeekByUser();
+        // $values->setUser($user);
+        // $values->setDate($dateTimeFactory->getStartOfWeek());
 
-        // maybe do the calculating here
+        // $week_start_date = $dateTimeFactory->getStartOfWeek($values->getDate())->format('Ymd');;
+        // $week_end_date = $dateTimeFactory->getEndOfWeek($values->getDate())->format('Ymd');;
+
+        // $this->logger->debug('{week_start_date}', ['week_start_date' => $week_start_date]);
+        // $this->logger->debug('{week_end_date}', ['week_end_date' => $week_end_date]);
+
         $last_week = "9999-00";
         $week_list = [];
         $week_dict = array(
@@ -80,24 +82,32 @@ final class WeeklyOverviewController extends AbstractController
             'Saturday'=> 0,
             'Sunday'=> 0,
         );
-        foreach ($timesheet as $timesheet_entry) {
-            $current_week = $timesheet_entry->getBegin()->format('Y-W');
+        $lastDateIndex = count($timesheet) - 1;
 
-            $this->logger->debug('##############');
+        // Each timesheet_entry is a day
+        foreach ($timesheet as $index => $timesheet_entry) {
+            $current_week = $timesheet_entry->getBegin()->format('Y-W');
+            $current_date = $timesheet_entry->getBegin()->format('Ymd');
+
+            // $this->logger->debug('##############');
             // $this->logger->debug('{last_week}', ['last_week' => $last_week]);
             // $this->logger->debug('{current_week}', ['current_week' => $current_week]);
             // $this->logger->debug('{begin}', ['begin' => $timesheet_entry->getBegin()]);
             // $this->logger->debug('{end}', ['end' => $timesheet_entry->getEnd()]);
             // $this->logger->debug('{day}', ['day' => $timesheet_entry->getBegin()->format('l')]);
             // $this->logger->debug('{duration}', ['duration' => $timesheet_entry->getCalculatedDuration()]);
-            $this->logger->debug('{getWorkHoursMonday}', ['getWorkHoursMonday' => $user->getWorkHoursMonday()]);
+            // $this->logger->debug('{getWorkHoursMonday}', ['getWorkHoursMonday' => $user->getWorkHoursMonday()]);
 
-            if ($current_week > $last_week){
+            $current_day_name = $timesheet_entry->getBegin()->format('l');
+            $seconds = $timesheet_entry->getCalculatedDuration();
+
+            if (
+                ($current_week > $last_week) or
+                // ($index == $lastDateIndex) or
+                ($current_day_name === "Sunday")
+            )
+            {
                 $week_dict['weeknumber'] = $last_week;
-                
-                $seconds = $week_dict['totalworktimes'];
-                $hours = floor($seconds / 3600);
-                $minutes = floor(($seconds % 3600) / 60);
 
                 array_push($week_list, $week_dict);
 
@@ -112,45 +122,92 @@ final class WeeklyOverviewController extends AbstractController
                     'Saturday'=> 0,
                     'Sunday'=> 0,
                 );
-                }
-                $new_key = $timesheet_entry->getBegin()->format('l');
-                $seconds = $timesheet_entry->getCalculatedDuration();
+            }
 
-                // $this->logger->debug('{new_key}', ['new_key' => $new_key]);
-                // $this->logger->debug('{new_value}', ['new_value' => $seconds]);
-                
-                if (array_key_exists($new_key, $week_dict)){
-                    $old_seconds = $week_dict[$new_key];
-                    // $this->logger->debug('{old_seconds}', ['old_seconds' => $old_seconds]);
-                    // $this->logger->debug('{seconds}', ['seconds' => $seconds]);
-                    $new_value = $old_seconds + $seconds;
-                    $week_dict[$new_key] = $new_value;
-                } else {
-                    $week_dict[$new_key] = $seconds;
-                }
+            // $this->logger->debug('{current_day}', ['current_day' => $current_day_name]);
+            // $this->logger->debug('{seconds}', ['seconds' => $seconds]);
+            $activity = $timesheet_entry->getActivity()->getName();
+            // $this->logger->debug('{current_week}', ['current_week:' => $current_week], ['day:' => $current_day_name], ['seconds:' => $seconds]);
+
+            $this->logger->debug(sprintf(
+                "current_week: %s   last_week: %s   day: %s   seconds: %s",
+                $current_week, $last_week, $current_day_name, $seconds
+            ));
+
+            // if (array_key_exists($current_day_name, $week_dict)){
+            // $old_seconds = $week_dict[$current_day_name];
+            // $this->logger->debug(sprintf(
+            //     "week_dict before: %s   old_seconds: %s   seconds: %s",
+            //     $week_dict[$current_day_name], $old_seconds, $seconds
+            // ));
+            
+            if ($activity === "Pause") {
+                // $seconds = $old_seconds - $seconds;
+                $week_dict[$current_day_name] -= $seconds;
+                $week_dict['totalworktimes'] -= $seconds;
+            } else {
+                // $seconds = $old_seconds + $seconds;
+                $week_dict[$current_day_name] += $seconds;
                 $week_dict['totalworktimes'] += $seconds;
+            };
 
+            
+            
+            $this->logger->debug(sprintf(
+                "week_dict after: %s",
+                $week_dict[$current_day_name]
+            ));
+
+            if ($index == $lastDateIndex) {
+                $week_dict['weeknumber'] = $last_week;
+                array_push($week_list, $week_dict);
+            }
+            // } else {
+            //     $week_dict[$current_day_name] = $seconds;
+            //     $this->logger->debug(sprintf(
+            //         "week_dict new: %s",
+            //         $week_dict[$current_day_name]
+            //     ));
+            // }
+            // $week_dict['totalworktimes'] += $seconds;
+
+            // $this->logger->debug('{index}', ['index' => $index]);
+            // $this->logger->debug('{lastDateIndex}', ['lastDateIndex' => $lastDateIndex]);
+            // $this->logger->debug('{week_end_date}', ['week_end_date' => $week_end_date]);
+            // $this->logger->debug('{current_date}', ['current_date' => $current_date]);
+            
+            
+            $seconds = 0;
             $last_week = $current_week;
         };
-        
-
-        foreach ($week_list as $item) {
-            $item['Monday'] = $this->formatDuration($item['Monday']);
-            $item['Tuesday'] = $this->formatDuration($item['Tuesday']);
-            $item['Wednesday'] = $this->formatDuration($item['Wednesday']);
-            $item['Thursday'] = $this->formatDuration($item['Thursday']);
-            $item['Friday'] = $this->formatDuration($item['Friday']);
-            $item['Saturday'] = $this->formatDuration($item['Saturday']);
-            $item['Sunday'] = $this->formatDuration($item['Sunday']);
-        }
 
 
         return $this->render('@WeeklyOverview/index.html.twig', [
             'user' => $user,
             'pageTitle' => $pageTitle,
-            'period' => new DailyStatistic($start, $end, $user),
+            // 'period' => new DailyStatistic($week_start_date, $week_end_date, $user),
             'timesheets_weekly' => $timesheet,
             'week_list' => $week_list,
         ]);
     }
+
+    // Each timesheet_entry is a day
+    // private function process_timesheet_entry($timesheet_entry): Array
+    // {
+    //     $week_dict = array(
+    //         // 'weeknumber'=>'',
+    //         // 'totalworktimes'=> 0,
+    //         'Monday'=> 0,
+    //         'Tuesday'=> 0,
+    //         'Wednesday'=> 0,
+    //         'Thursday'=> 0,
+    //         'Friday'=> 0,
+    //         'Saturday'=> 0,
+    //         'Sunday'=> 0,
+    //     );
+
+    //     for 
+
+    //     return $week_dict;
+    // }
 }

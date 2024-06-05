@@ -11,6 +11,7 @@
 
 {% block main %} 	
 	{% set expectedWeekTimes = user.workHoursMonday + user.workHoursTuesday + user.workHoursWednesday + user.workHoursThursday + user.workHoursFriday + user.workHoursSaturday + user.workHoursSunday %}
+	{# {% set expectedWeekTimes = user.workHoursMonday + user.workHoursTuesday + user.workHoursWednesday + user.workHoursThursday + user.workHoursFriday %} #}
 
 
 	{% block body %}
@@ -57,22 +58,28 @@
 					<tbody>
 						{% if week_list is defined %}
 							{% for week in week_list %}
-								{% set work_time_is_total = work_time_is_total + week['totalworktimes'] %}
+								{% set totalworktimes = week['Monday'] + week['Tuesday'] + week['Wednesday'] + week['Thursday'] + week['Friday'] + week['Saturday'] + week['Sunday'] %}
+								{# {% set totalworktimes = week['Monday'] + week['Tuesday'] + week['Wednesday'] + week['Thursday'] + week['Friday'] %} #}
+								{# {% set work_time_is_total = work_time_is_total + week['totalworktimes'] %} #}
+								{% set work_time_is_total = work_time_is_total + totalworktimes %}
+
 								{% set expectedWeekTimes_total = expectedWeekTimes_total + expectedWeekTimes %}
 								</tr>
 									<td>{{ week['weeknumber'] }}</td>
 									<td>{{ expectedWeekTimes|duration }}</td>
 
-									<td>{{expectedWeekTimes}};{{week['totalworktimes']}}:		{{ self.work_times_result(expectedWeekTimes, week['totalworktimes'], decimal) }}</td>
+									<td>{{expectedWeekTimes|duration}};{{totalworktimes|duration}}:		{{ self.work_times_result(expectedWeekTimes, totalworktimes, decimal) }}</td>
 									<td>{{expectedWeekTimes_total}}:{{work_time_is_total}}:		{{ self.work_times_result(expectedWeekTimes_total, work_time_is_total, decimal) }}</td>
 									
-									<td>{{user.workHoursMonday}}:{{week['Monday']}}:			{{ self.work_times_result(user.workHoursMonday, week['Monday'], decimal) }}</td>
-
-
+									{# <td>{{user.workHoursMonday}}:{{week['Monday']}}:			{{ self.work_times_result(user.workHoursMonday, week['Monday'], decimal) }}</td> #}
+									
+									<td>{{ self.work_times_result(user.workHoursMonday, week['Monday'], decimal) }}</td>
 									<td>{{ self.work_times_result(user.workHoursTuesday, week['Tuesday'], decimal) }}</td>
 									<td>{{ self.work_times_result(user.workHoursWednesday, week['Wednesday'], decimal) }}</td>
 									<td>{{ self.work_times_result(user.workHoursThursday, week['Thursday'], decimal) }}</td>
 									<td>{{ self.work_times_result(user.workHoursFriday, week['Friday'], decimal) }}</td>
+									{# <td>{{ 0 }}</td>
+									<td>{{ 0 }}</td> #}
 									<td>{{ self.work_times_result(user.workHoursSaturday, week['Saturday'], decimal) }}</td>
 									<td>{{ self.work_times_result(user.workHoursSunday, week['Sunday'], decimal) }}</td>
 								</tr>
