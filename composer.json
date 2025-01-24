@@ -3,7 +3,7 @@
     "description": "A Plugin for Kimai versions >2.0.0, which allows you to have a weekly overview with overtime calculations.",
     "homepage": "https://github.com/Fave42/WeeklyOverviewBundle",
     "type": "kimai-plugin",
-    "version": "1.0.0",
+    "version": "0.1.0",
     "keywords": [
         "kimai",
         "kimai-plugin",
@@ -15,7 +15,7 @@
         {
             "name": "Fabian Fey",
             "email": "f-fey@t-online.de",
-            "homepage": ""
+            "homepage": "https://github.com/Fave42"
         }
     ],
     "extra": {
